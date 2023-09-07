@@ -17,13 +17,6 @@ const StyledEditor = styled.div`
   width: 80%;
   margin-bottom: 0.625rem;
 
-  .grammarSuggestion {
-    background-color: lightgreen;
-  }
-
-  .removalSuggestion {
-    background-color: lightcoral;
-  }
 `;
 
 export const initialDoc = {
