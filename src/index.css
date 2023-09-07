@@ -38,6 +38,10 @@ a {
     position: relative;
 }
 
+.comment {
+  background: yellow;
+}
+
 .ProseMirror {
     word-wrap: break-word;
     white-space: pre-wrap;
