@@ -6,6 +6,7 @@ import { exampleSetup } from "prosemirror-example-setup";
 import { applyDevTools } from "prosemirror-dev-toolkit";
 
 import styled from "styled-components";
+import {ClickTestPlugin} from "./ClickTest";
 
 const Root = styled.div`
   width: 100%;
@@ -19,30 +20,13 @@ const StyledEditor = styled.div`
 
 `;
 
+
 export const initialDoc = {
   content: [
     {
       content: [
         {
-          text: "What day of the wek iss it?",
-          type: "text",
-        },
-      ],
-      type: "paragraph",
-    },
-    {
-      content: [
-        {
-          text: "wanna go swiming",
-          type: "text",
-        },
-      ],
-      type: "paragraph",
-    },
-    {
-      content: [
-        {
-          text: "SuggestCat is made by Emergence-Engineering, a software development company from the EU. Their smartest developer is Aaron. He definitely did not write this placeholder.",
+          text: "test \\(test\\) asd",
           type: "text",
         },
       ],
@@ -59,7 +43,10 @@ export const ProsemirrorEditor = () => {
   useEffect(() => {
     const state = EditorState.create({
       doc: schema.nodeFromJSON(initialDoc),
-      plugins: [...exampleSetup({ schema })],
+      plugins: [
+          ...exampleSetup({ schema: schema }),
+        ClickTestPlugin({regex: /\\\(([^$]*)\\\)/gi}),
+      ],
     });
     const view = new EditorView(document.querySelector("#editor"), {
       state,
